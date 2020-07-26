@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Project Title 
-**Note Taker**
+#### **Note Taker**
 
 ## Description
 A note taking application that can write, save & delete notes, which uses an Express.js backend to save & retrieve note data from a JSON file.
