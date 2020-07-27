@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const uuid = require("uuid");
+const uuid = require("uuidv4");
 const store = require('../db/db.json');
 
 module.exports = function (app) {
@@ -44,7 +44,6 @@ module.exports = function (app) {
 
             fs.writeFile(store, JSON.stringify(noteObjRemain), function (err, data) {
                 if (err) throw err;
-                console.log("obj removed");
                 return res.json(noteObj);
             });
         });
