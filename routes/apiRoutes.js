@@ -7,6 +7,7 @@ module.exports = function (app) {
     // GET notes from database
     app.get("/api/notes", (req, res) => {
         fs.readFile(store, "utf8", function (err, data) {
+            console.log(store);
             if (err) {
                 throw err;
             }

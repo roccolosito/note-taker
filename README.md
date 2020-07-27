@@ -7,6 +7,8 @@
 ## Description
 A note taking application that can write, save & delete notes, which uses an Express.js backend to save & retrieve note data from a JSON file.
 
+Deployed app via Heroku: https://quick-note-taker.herokuapp.com/
+
 ## Visuals
 
 
