@@ -15,25 +15,26 @@ module.exports = function (app) {
         });
     });
 
-    // POST notes to database
+    // Takes a JSON input with keys "title" and "text" and adds a new note object with that message to the db.json file
     app.post("/api/notes", (req, res) => {
-        fs.readFile(store, "utf8", function (err1, data1) {
-            if (err1) {
-                throw err1;
+        fs.readFile(path.join(__dirname, store), "utf8", function (error, response) {
+            if (error) {
+                console.log(error);
             }
-            let arrData = JSON.parse(data1);
-            let note = req.body;
-            note.id = uuid.v4();
-            arrData.push(note);
-            fs.writeFile(store, JSON.stringify(arrData, null, 2), function (err2) {
-                console.log("added note");
-                if (err2) {
-                    throw err2;
-                }
-                return res.json(arrData);
+            const notes = JSON.parse(response);
+            const noteRequest = req.body;
+            const newNoteId = notes.length + 1;
+            const newNote = {
+                id: newNoteId,
+                title: noteRequest.title,
+                text: noteRequest.text
+            };
+            notes.push(newNote);
+            res.json(newNote);
+            fs.writeFile(path.join(__dirname, store), JSON.stringify(notes, null, 2), function (err) {
+                if (err) throw err;
             });
         });
-
     });
 
     // DELETE notes with matching id
