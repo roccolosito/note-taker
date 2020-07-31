@@ -67,15 +67,11 @@ var handleNoteDelete = function(event) {
   // prevents the click listener for the list from being called when the button inside of it is clicked
   event.stopPropagation();
 
-  var note = $(this)
+  var noteid = $(this)
     .parent(".list-group-item")
-    .data();
+    .attr("data-id");
 
-  if (activeNote.id === note.id) {
-    activeNote = {};
-  }
-
-  deleteNote(note.id).then(function() {
+  deleteNote(noteid).then(function() {
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -112,10 +108,8 @@ var renderNoteList = function(notes) {
   for (var i = 0; i < notes.length; i++) {
     var note = notes[i];
 
-    var $li = $("<li class='list-group-item'>");
-    $li.data(note);
-    var $span = $("<span>");
-    $span.text(note.title);
+    var $li = $("<li class='list-group-item'>").attr("data-id", i);
+    var $span = $("<span>").text(note.title);
     var $delBtn = $(
       "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
     );
