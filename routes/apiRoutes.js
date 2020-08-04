@@ -30,8 +30,6 @@ module.exports = app => {
             notes.push(newNote);
             updateDb(response, notes);
         });
-
-        // return console.log("Added new note: " + newNote.title);
     });
 
     // GET - Retrieves a note with specific id
@@ -50,13 +48,12 @@ module.exports = app => {
             notes.splice(req.params.id, 1);
             updateDb(response, notes);
         });
-        // console.log("Deleted note with id " + req.params.id);
     });
-
-    //updates the json file whenever a note is added or deleted
 };
 
 function updateDb(response, notes) {
+    // writeFileSync doesn't need callbacks like writeFile, this is updating the DB.json
+    // every time it's called throughout the api routing functions
     fs.writeFileSync("./db/db.json", JSON.stringify(notes, '\t'));
     response.json("Ok");
 };
