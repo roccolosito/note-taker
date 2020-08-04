@@ -11,7 +11,7 @@ Deployed app via Heroku: https://quick-note-taker.herokuapp.com/
 
 ## Visuals
 
-![NoteGif](./public/assets/note.gif)
+![NoteGif](./public/assets/notetaker.gif)
 
 ### Table of Contents
 * [Usage](#Usage)
