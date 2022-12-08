@@ -8,7 +8,7 @@
   "author": "Rocco Losito",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "uuidv4": "^6.2.0"
   },
   "description": "An app that is used for note-taking."
